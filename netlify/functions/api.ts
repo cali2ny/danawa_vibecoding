@@ -204,6 +204,7 @@ router.get("/radar", (req, res) => {
   }
 });
 
+app.use("/api", router);
 app.use("/.netlify/functions/api", router);
 
 export const handler = serverless(app);
