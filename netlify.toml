@@ -1,11 +1,11 @@
 [build]
-  command = "NODE_ENV=production npx vite build"
+  command = "npm install && npx vite build"
   publish = "dist/public"
   functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
-  NODE_ENV = "production"
+  NPM_FLAGS = "--include=dev"
 
 [functions]
   node_bundler = "esbuild"
