@@ -1,10 +1,11 @@
 [build]
-  command = "npx vite build --outDir dist/public"
+  command = "NODE_ENV=production npx vite build"
   publish = "dist/public"
   functions = "netlify/functions"
 
 [build.environment]
   NODE_VERSION = "20"
+  NODE_ENV = "production"
 
 [functions]
   node_bundler = "esbuild"

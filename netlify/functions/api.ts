@@ -1,10 +1,32 @@
 import express from "express";
 import serverless from "serverless-http";
 import { z } from "zod";
-import type { RadarData, RadarModel, Nation } from "../../shared/schema";
 
 const app = express();
 app.use(express.json());
+
+type Nation = "domestic" | "export";
+
+interface RadarModel {
+  rank: number;
+  prevRank: number | null;
+  modelName: string;
+  brand: string;
+  sales: number;
+  prevSales: number;
+  momAbs: number;
+  momPct: number;
+  rankChange: number;
+  score: number;
+  originalUrl: string;
+}
+
+interface RadarData {
+  month: string;
+  nation: Nation;
+  models: RadarModel[];
+  fetchedAt: string;
+}
 
 const DOMESTIC_BRANDS = [
   "현대", "기아", "제네시스", "쉐보레", "르노코리아", "KG모빌리티"
