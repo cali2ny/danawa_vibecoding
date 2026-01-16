@@ -47,8 +47,15 @@ The `radarService.ts` generates mock data simulating Danawa's vehicle sales stru
 
 ### Build System
 - **Development**: tsx for TypeScript execution, Vite dev server with HMR
-- **Production**: Custom build script using esbuild (server) + Vite (client)
+- **Production (Replit)**: Custom build script using esbuild (server) + Vite (client)
+- **Production (Netlify)**: Vite for frontend, serverless functions for backend
 - **Output**: Single `dist/` folder with bundled server and static client assets
+
+### Netlify Deployment
+- **Configuration**: `netlify.toml` defines build settings and redirects
+- **Serverless Function**: `netlify/functions/api.ts` wraps Express routes for serverless
+- **API Redirect**: `/api/*` requests are redirected to `/.netlify/functions/api/:splat`
+- **Build Command**: `npx vite build --outDir dist/public`
 
 ## External Dependencies
 
